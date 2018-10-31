@@ -56,7 +56,11 @@ def get_tasks():
                     tasks.append( (begins, description_str) )
 
         iterate_days()
-        driver.execute_script('OnCvNext(1)'); month = month+1
+        driver.execute_script('OnCvNext(1)')
+        month = month+1
+        if month == 13:
+            month = 1
+            year = year + 1
         iterate_days()
     except:
         print (traceback.format_exc())
