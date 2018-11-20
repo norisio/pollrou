@@ -77,6 +77,9 @@ def compare_tasks_and_notify(old_tasks, new_tasks):
     for task in old_tasks:
         if not task in new_tasks:
             begins_str = time.strftime('%m/%d %H:%M', task[0])
+            begins_day = datetime.date(task[0].tm_year, task[0].tm_mon, task[0].tm_mday)
+            if begins_day < datetime.date.today():
+                continue
             description_str = task[1]
             print(f'Found deleted task: {description_str}')
             post_message(f'Appointment Deleted.\n{begins_str} {description_str}')
