@@ -18,6 +18,7 @@ rsvrou_url = os.environ['POLLROU_RSVROU_URL']
 chromedriver_path = os.environ['POLLROU_CHROMEDRIVER_PATH']
 
 def post_message(text):
+    text = text + "\n" + rsvrou_url
     requests.post(webhook_url, data=json.dumps({ 'text': text, 'username': 'ぽーる郎' }))
 
 def get_tasks():
